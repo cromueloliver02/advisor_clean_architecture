@@ -41,9 +41,10 @@ class AdviceView extends StatelessWidget {
                 // child: CircularProgressIndicator(
                 //   color: theme.colorScheme.secondary,
                 // ),
-                child: AdviceField(
-                  advice: 'Your advice is waiting for you lorem ipsum',
-                ),
+                child: ADVErrorMessage(),
+                // child: AdviceField(
+                //   advice: 'Your advice is waiting for you lorem ipsum',
+                // ),
               ),
             ),
             SizedBox(height: 75),
