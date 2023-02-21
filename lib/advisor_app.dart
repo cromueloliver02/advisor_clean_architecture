@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app_theme.dart';
 import 'presentation/pages/pages.dart';
-import 'utils/utils.dart';
 
 class AdvisorApp extends StatelessWidget {
   const AdvisorApp({super.key});
