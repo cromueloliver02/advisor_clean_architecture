@@ -14,7 +14,7 @@ class AdviceView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Advicer',
+          'Adviser',
           style: textTheme.displayLarge,
         ),
         actions: [
