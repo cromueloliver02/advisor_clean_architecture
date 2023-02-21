@@ -7,9 +7,8 @@ part 'theme_mode_state.dart';
 class ThemeModeCubit extends Cubit<ThemeModeState> {
   ThemeModeCubit() : super(ThemeModeState.initial());
 
-  void toggleThemeMode() {
-    final ThemeMode newThemeMode =
-        state.themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+  void toggleThemeMode(bool isDark) {
+    final ThemeMode newThemeMode = isDark ? ThemeMode.dark : ThemeMode.light;
 
     emit(state.copyWith(themeMode: () => newThemeMode));
   }

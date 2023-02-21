@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../cubits/theme_mode/theme_mode_cubit.dart';
 
 class AdviceView extends StatelessWidget {
   const AdviceView({super.key});
@@ -15,9 +18,11 @@ class AdviceView extends StatelessWidget {
           style: textTheme.displayLarge,
         ),
         actions: [
-          Switch(
-            value: true,
-            onChanged: (bool value) {},
+          BlocBuilder<ThemeModeCubit, ThemeModeState>(
+            builder: (ctx, state) => Switch(
+              value: state.themeMode == ThemeMode.dark,
+              onChanged: context.read<ThemeModeCubit>().toggleThemeMode,
+            ),
           ),
         ],
       ),
