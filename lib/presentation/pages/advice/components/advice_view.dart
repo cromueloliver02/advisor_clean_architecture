@@ -1,10 +1,10 @@
-import 'package:advisor_clean_architecture/presentation/pages/advice/components/initial_advice_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../cubits/cubits.dart';
 import '../../../widgets/widgets.dart';
-// import 'advice_field.dart';
+import 'advice_field.dart';
+import 'initial_advice_field.dart';
 
 class AdviceView extends StatelessWidget {
   const AdviceView({super.key});
@@ -35,10 +35,8 @@ class AdviceView extends StatelessWidget {
           children: const [
             Expanded(
               child: Center(
-                child: InitialAdviceField(),
-                // child: CircularProgressIndicator(
-                //   color: theme.colorScheme.secondary,
-                // ),
+                // child: InitialAdviceField(),
+                child: ADVLoadingField(),
                 // child: ADVErrorMessage(),
                 // child: AdviceField(
                 //   advice: 'Your advice is waiting for you lorem ipsum',
