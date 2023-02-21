@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'features/advise/presentation/pages/pages.dart';
+import 'presentation/pages/pages.dart';
 import 'utils/utils.dart';
 
 class AdvisorApp extends StatelessWidget {
