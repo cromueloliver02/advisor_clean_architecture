@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../cubits/theme_mode/theme_mode_cubit.dart';
+import '../../../cubits/cubits.dart';
+import '../../../widgets/widgets.dart';
+import 'adv_advice_field.dart';
 
 class AdviceView extends StatelessWidget {
   const AdviceView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final ThemeData theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'Adviser',
-          style: textTheme.displayLarge,
+          style: theme.textTheme.displayLarge,
         ),
         actions: [
           BlocBuilder<ThemeModeCubit, ThemeModeState>(
@@ -26,7 +28,30 @@ class AdviceView extends StatelessWidget {
           ),
         ],
       ),
-      body: const Placeholder(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        child: Column(
+          children: const [
+            Expanded(
+              child: Center(
+                // child: Text(
+                //   'Your advice is waiting for you lorem ipsum',
+                //   style: theme.textTheme.displayLarge,
+                // ),
+                // child: CircularProgressIndicator(
+                //   color: theme.colorScheme.secondary,
+                // ),
+                child: AdviceField(
+                  advice: 'Your advice is waiting for you lorem ipsum',
+                ),
+              ),
+            ),
+            SizedBox(height: 75),
+            ADVButton(title: 'Get Advice'),
+            SizedBox(height: 75),
+          ],
+        ),
+      ),
     );
   }
 }
