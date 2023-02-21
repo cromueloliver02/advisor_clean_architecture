@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../cubits/cubits.dart';
 import '../../../widgets/widgets.dart';
-import 'adv_advice_field.dart';
+import 'advice_field.dart';
 
 class AdviceView extends StatelessWidget {
   const AdviceView({super.key});
