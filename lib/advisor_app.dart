@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'app_theme.dart';
 import 'dependency_injector.dart';
 import 'presentation/cubits/cubits.dart';
 import 'presentation/pages/pages.dart';
+import 'presentation/utils/themes/app_theme.dart';
 
 class AdvisorApp extends StatelessWidget {
   const AdvisorApp({super.key});
@@ -16,10 +16,10 @@ class AdvisorApp extends StatelessWidget {
       child: BlocBuilder<ThemeModeCubit, ThemeModeState>(
         builder: (ctx, state) => MaterialApp(
           title: 'ADVISOR APP',
-          themeMode: state.themeMode,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
           debugShowCheckedModeBanner: false,
+          themeMode: state.themeMode,
+          theme: sl<AppTheme>().lightTheme,
+          darkTheme: sl<AppTheme>().darkTheme,
           home: const AdvicePage(),
         ),
       ),

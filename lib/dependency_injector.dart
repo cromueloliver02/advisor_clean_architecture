@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import 'presentation/cubits/cubits.dart';
+import 'presentation/utils/utils.dart';
 
 // service locator
 final GetIt sl = GetIt.instance;
@@ -20,4 +21,5 @@ void setup() {
   sl.registerLazySingleton<ThemeModeCubit>(() => ThemeModeCubit());
 
   // utilities
+  sl.registerLazySingleton<AppTheme>(() => AppTheme());
 }

@@ -43,7 +43,7 @@ class AppTheme {
     bodyLarge: _darkThemeBodyeTextStyle,
   );
 
-  static final ThemeData lightTheme = ThemeData(
+  final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: _lightPrimaryColor,
     textTheme: _lightTextTheme,
     bottomAppBarTheme: const BottomAppBarTheme(color: _appbarColorLight),
@@ -59,7 +59,7 @@ class AppTheme {
     ),
   );
 
-  static final ThemeData darkTheme = ThemeData(
+  final ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: _darkPrimaryColor,
     textTheme: _darkTextTheme,
     bottomAppBarTheme: BottomAppBarTheme(color: _appbarColorDark),
