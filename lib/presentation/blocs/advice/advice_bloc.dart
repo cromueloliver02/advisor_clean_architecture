@@ -1,11 +1,21 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/failures/failures.dart';
+import '../../../core/usecases/usecase.dart';
+import '../../../domain/usecases/get_advice_usecase.dart';
 
 part 'advice_event.dart';
 part 'advice_state.dart';
 
 class AdviceBloc extends Bloc<AdviceEvent, AdviceState> {
-  AdviceBloc() : super(AdviceInitial()) {
+  final GetAdvice getAdvice;
+
+  AdviceBloc({
+    required this.getAdvice,
+  }) : super(AdviceInitial()) {
     on<AdviceGetRequested>(_onAdviceGetRequested);
   }
 
@@ -14,10 +24,16 @@ class AdviceBloc extends Bloc<AdviceEvent, AdviceState> {
     Emitter<AdviceState> emit,
   ) async {
     emit(AdviceLoadInProgress());
-    await Future.delayed(const Duration(seconds: 3));
-    emit(const AdviceLoadSuccess(advice: 'Lorem ipsum dolor sit amet'));
-    // emit(const AdviceLoadFailure(
-    //   error: 'Network error: cannot connect to the internet',
-    // ));
+
+    final Either<Failure, String> eitherAdvice = await getAdvice(NoParams());
+
+    eitherAdvice.fold(
+      (Failure error) {
+        emit(AdviceLoadFailure(error: error));
+
+        debugPrint(error.toString());
+      },
+      (String advice) => emit(AdviceLoadSuccess(advice: advice)),
+    );
   }
 }

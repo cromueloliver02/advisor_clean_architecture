@@ -67,7 +67,7 @@ class AdviceView extends StatelessWidget {
     }
 
     if (state is AdviceLoadFailure) {
-      return ADVErrorMessage(message: '${state.error}');
+      return ADVErrorMessage(message: state.error.message);
     }
 
     return AdviceField(

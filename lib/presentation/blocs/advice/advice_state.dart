@@ -23,7 +23,7 @@ class AdviceLoadSuccess extends AdviceState {
 }
 
 class AdviceLoadFailure extends AdviceState {
-  final Object error;
+  final Failure error;
 
   const AdviceLoadFailure({
     required this.error,
