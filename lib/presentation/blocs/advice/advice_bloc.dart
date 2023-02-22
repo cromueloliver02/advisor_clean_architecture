@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/failures/failures.dart';
 import '../../../core/usecases/usecase.dart';
+import '../../../domain/entities/advice_entity.dart';
 import '../../../domain/usecases/get_advice_usecase.dart';
 
 part 'advice_event.dart';
@@ -25,7 +26,7 @@ class AdviceBloc extends Bloc<AdviceEvent, AdviceState> {
   ) async {
     emit(AdviceLoadInProgress());
 
-    final Either<Failure, String> eitherAdvice = await getAdvice(NoParams());
+    final Either<Failure, Advice> eitherAdvice = await getAdvice(NoParams());
 
     eitherAdvice.fold(
       (Failure error) {
@@ -33,7 +34,7 @@ class AdviceBloc extends Bloc<AdviceEvent, AdviceState> {
 
         debugPrint(error.toString());
       },
-      (String advice) => emit(AdviceLoadSuccess(advice: advice)),
+      (Advice advice) => emit(AdviceLoadSuccess(advice: advice.advice)),
     );
   }
 }
