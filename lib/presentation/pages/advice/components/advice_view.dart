@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../blocs/blocs.dart';
 import '../../../cubits/cubits.dart';
 import '../../../widgets/widgets.dart';
 import 'advice_field.dart';
-// import 'initial_advice_field.dart';
+import 'initial_advice_field.dart';
 
 class AdviceView extends StatelessWidget {
   const AdviceView({super.key});
@@ -32,23 +33,45 @@ class AdviceView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
-          children: const [
+          children: [
             Expanded(
               child: Center(
-                // child: InitialAdviceField(),
-                // child: ADVLoadingField(),
-                // child: ADVErrorMessage(),
-                child: AdviceField(
-                  advice: 'Your advice is waiting for you lorem ipsum',
+                child: BlocBuilder<AdviceBloc, AdviceState>(
+                  builder: _adviceBuilder,
                 ),
               ),
             ),
-            SizedBox(height: 75),
-            ADVButton(title: 'Get Advice'),
-            SizedBox(height: 75),
+            const SizedBox(height: 75),
+            ADVButton(
+              title: 'Get Advice',
+              onPressed: () => _getAdvice(context),
+            ),
+            const SizedBox(height: 75),
           ],
         ),
       ),
+    );
+  }
+
+  void _getAdvice(BuildContext ctx) {
+    ctx.read<AdviceBloc>().add(AdviceGetRequested());
+  }
+
+  Widget _adviceBuilder(BuildContext ctx, AdviceState state) {
+    if (state is AdviceInitial) {
+      return const InitialAdviceField();
+    }
+
+    if (state is AdviceLoadInProgress) {
+      return const ADVLoadingField();
+    }
+
+    if (state is AdviceLoadFailure) {
+      return ADVErrorMessage(message: '${state.error}');
+    }
+
+    return AdviceField(
+      advice: (state as AdviceLoadSuccess).advice,
     );
   }
 }

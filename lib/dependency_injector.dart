@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import 'presentation/blocs/blocs.dart';
 import 'presentation/cubits/cubits.dart';
 import 'presentation/utils/utils.dart';
 
@@ -16,9 +17,10 @@ void setup() {
   // use cases
 
   // blocs
+  sl.registerFactory<AdviceBloc>(() => AdviceBloc());
 
   // cubits
-  sl.registerLazySingleton<ThemeModeCubit>(() => ThemeModeCubit());
+  sl.registerFactory<ThemeModeCubit>(() => ThemeModeCubit());
 
   // utilities
   sl.registerLazySingleton<AppTheme>(() => AppTheme());

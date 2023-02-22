@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class ADVButton extends StatelessWidget {
   final String title;
+  final VoidCallback? onPressed;
 
   const ADVButton({
     super.key,
     required this.title,
+    required this.onPressed,
   });
 
   @override
@@ -13,7 +15,7 @@ class ADVButton extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
 
     return InkResponse(
-      onTap: () {},
+      onTap: onPressed,
       child: Material(
         elevation: 20,
         borderRadius: BorderRadius.circular(15),

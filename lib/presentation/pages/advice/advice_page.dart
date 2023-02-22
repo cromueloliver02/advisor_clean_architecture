@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../dependency_injector.dart';
+import '../../blocs/advice/advice_bloc.dart';
 import 'components/advice_view.dart';
 
 class AdvicePage extends StatelessWidget {
-  static const String id = '/advice';
-
-  static Route<dynamic> route(RouteSettings settings) {
-    return MaterialPageRoute(
-      settings: settings,
-      builder: (ctx) => const AdvicePage(),
-    );
-  }
-
   const AdvicePage({super.key});
 
   @override
-  Widget build(BuildContext context) => const AdviceView();
+  Widget build(BuildContext context) {
+    return BlocProvider<AdviceBloc>.value(
+      value: sl<AdviceBloc>(),
+      child: const AdviceView(),
+    );
+  }
 }
