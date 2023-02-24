@@ -1,1 +1,1 @@
-const String kApiUrl = 'https://api.flutter-community.de';
+const String kApiUrl = 'https://api.flutter-community.com';
