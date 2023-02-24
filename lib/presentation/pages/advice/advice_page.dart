@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../dependency_injector.dart';
-import '../../blocs/advice/advice_bloc.dart';
+import '../../../core/dependencies.dart';
+import '../../blocs/blocs.dart';
 import 'components/advice_view.dart';
 
 class AdvicePage extends StatelessWidget {

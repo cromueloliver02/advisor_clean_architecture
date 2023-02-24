@@ -24,7 +24,10 @@ class ADVErrorMessage extends StatelessWidget {
         Text(
           message,
           textAlign: TextAlign.center,
-          style: theme.textTheme.displayLarge,
+          style: theme.textTheme.displayLarge!.copyWith(
+            height: 1.3,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ],
     );

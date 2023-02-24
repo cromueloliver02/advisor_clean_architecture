@@ -3,10 +3,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/failures/failures.dart';
+import '../../../core/errors/failures/failures.dart';
 import '../../../core/usecases/usecase.dart';
-import '../../../domain/entities/advice_entity.dart';
-import '../../../domain/usecases/get_advice_usecase.dart';
+import '../../../domain/entities/entities.dart';
+import '../../../domain/usecases/usecases.dart';
 
 part 'advice_event.dart';
 part 'advice_state.dart';

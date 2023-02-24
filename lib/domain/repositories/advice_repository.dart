@@ -1,5 +1,8 @@
-import '../entities/advice_entity.dart';
+import 'package:dartz/dartz.dart';
+
+import '../../core/errors/failures/failures.dart';
+import '../entities/entities.dart';
 
 abstract class AdviceRepository {
-  Future<Advice> getAdvice();
+  Future<Either<Failure, Advice>> getAdvice();
 }

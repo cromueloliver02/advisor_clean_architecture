@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'dependency_injector.dart';
+import 'core/dependencies.dart';
+import 'presentation/app_theme.dart';
 import 'presentation/cubits/cubits.dart';
 import 'presentation/pages/pages.dart';
-import 'presentation/utils/themes/app_theme.dart';
 
 class AdvisorApp extends StatelessWidget {
   const AdvisorApp({super.key});
